@@ -1,4 +1,4 @@
-20:51:33?MEJLprrzpalsche Freie Allianz Climb]!!! ’0
+﻿20:51:33?MEJLprrzpalsche Freie Allianz Climb]!!! ’0
 ' ' DIE GRUNEN
 
 mm
@@ -50,7 +50,9 @@ Mit besten Grtifsen,
 lam; imam @WﬂuWM/V/ ATM feed Mex;
 Joe 42; Wig» @136 (ffz ma 144.; 74; KTLE‘
 
-VPREREQUISITES
+V" Tesséra‘c't Will
+Fail With Noisy
+BackgroundsPREREQUISITES
 
 In order In make the rnosi of this, you will need (a have
 a little bit of pregrarrmung experience. All examples in this
@@ -62,6 +64,4 @@ You'll also need (a know some basic mathematics. This
 book is handson and example driven: leis of examples and
 lots of code, so even if your math skills are noi up to par.
 do noi worry! The examples are very damned and heavily
-documented (a help yuu follaw along." Tesséra‘c't Will
-Fail With Noisy
-Backgrounds
+documented (a help yuu follaw along.

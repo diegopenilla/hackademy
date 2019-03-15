@@ -16,6 +16,7 @@ args = vars(ap.parse_args())
 
 # state holds current state of the user
 state = 'home'
+is_paused = False
 # 3 different states: home, memory, reading
 
 # offline: tesseract / or online
@@ -28,6 +29,7 @@ def create_play(text, speed=0.93, language='de-DE'):
        speed: changes rate of sound [0-1]
        language: choose language see aplay -h'''
 
+    global is_paused 
     os.system('''pico2wave -l {} -w /home/pi/hackdemyk/audio/temp.wav "{}"'''.format(language,text))
     sound = wave.open("/home/pi/hackdemyk/audio/temp.wav")
     p = pyaudio.PyAudio()
@@ -39,14 +41,20 @@ def create_play(text, speed=0.93, language='de-DE'):
                 output = True)
     data = sound.readframes(chunk)
     while True:
-        if data != '':
+
+        if data != '' and not is_paused:
             stream.write(data)
             data = sound.readframes(chunk)
         # return prev or next to break the loop and be able to navigate during reading
         if GPIO.input(13) == False:
             return('prev')
-        if data == b'' or GPIO.input(11) == False:
+            
+        elif GPIO.input(15) == False: #pause
+            is_paused = not is_paused
+
+        elif data == b'' or GPIO.input(11) == False:
             return('next')
+
 
 #  Initializing raspberrypi 3b + pins.
 if bool(args['scan']) == True:
@@ -128,7 +136,7 @@ while index < len(pretext):
     a = create_play(text = pretext[index])
     if a == 'prev' and index > 0:
         index = index -1
-    else:
-        index +=1
+    if a == 'next':
+        index +=1  
 
 create_play('Program beendet')
